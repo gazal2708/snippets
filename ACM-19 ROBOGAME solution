@@ -1,0 +1,27 @@
+t = int(input())
+for i in range(t):
+    rob = input()
+    upper = []
+    lower = []
+    flag = 1
+    for j in range(len(rob)):
+        if rob[j] == '.':
+            # upper.append(0)
+            # lower.append(0)
+            continue
+        else:
+            if ((j+1)-int(rob[j]) < 1):
+                lower.append(1)
+            else:
+                lower.append((j+1)-int(rob[j]))
+            if ((j+1)+int(rob[j]) > len(rob)):
+                upper.append(len(rob))
+            else:
+                upper.append((j+1)+int(rob[j]))
+    for j in range(0,len(lower)-1):
+        if lower[j+1] <= upper[j]:
+            print("unsafe")
+            flag = 0
+            break
+    if flag==1:
+        print("safe")
